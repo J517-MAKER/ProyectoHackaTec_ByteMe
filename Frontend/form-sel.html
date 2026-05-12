@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones a Realizar por el SEL - INE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e9e9e9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8B3A62 0%, #a84a75 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px 15px 0 0;
+            box-shadow: 0 4px 15px rgba(139, 58, 98, 0.3);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group label:hover {
+            color: #8B3A62;
+        }
+
+        .form-group input[type="time"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+            resize: none;
+        }
+
+        .form-group input[type="time"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #8B3A62;
+            box-shadow: 0 0 0 3px rgba(139, 58, 98, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+            max-height: 200px;
+        }
+
+        .char-count {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .hidden-field {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .hidden-field.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hidden-field textarea {
+            margin-top: 10px;
+        }
+
+        .hidden-field label {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #8B3A62 0%, #a84a75 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 58, 98, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 58, 98, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-cancel {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-cancel:hover {
+            background: #e8e8e8;
+            border-color: #d0d0d0;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .required {
+            color: #8B3A62;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="formularioSEL">
+            <div class="header">
+                <h1>📋 Funciones a Realizar por el SEL</h1>
+                <p>Completa el siguiente formulario con la información de tu llegada y actividades en la casilla electoral.</p>
+            </div>
+
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    ✓ Informe registrado exitosamente
+                </div>
+
+                <!-- Campo 1: Hora de llegada -->
+                <div class="form-group">
+                    <label for="horaLlegada">
+                        ⏰ ¿A qué horas llegaste? <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="time" 
+                        id="horaLlegada" 
+                        name="horaLlegada" 
+                        required
+                    >
+                </div>
+
+                <!-- Campo 2: Percances con material -->
+                <div class="form-group">
+                    <label for="percances">
+                        ⚠️ ¿Tuviste algún percance con el material dado? <span class="required">*</span>
+                    </label>
+                    <select id="percances" name="percances" required onchange="togglePercanceField()">
+                        <option value="">-- Selecciona una opción --</option>
+                        <option value="no">No, todo está bien</option>
+                        <option value="si">Sí, hubo un percance</option>
+                    </select>
+                </div>
+
+                <!-- Campo oculto: Descripción del percance -->
+                <div class="hidden-field" id="percanceField">
+                    <label for="descripcionPercance">
+                        Describe el percance:
+                    </label>
+                    <textarea 
+                        id="descripcionPercance" 
+                        name="descripcionPercance" 
+                        placeholder="Detalla qué sucedió con el material..."
+                    ></textarea>
+                </div>
+
+                <!-- Campo 3: Cantidad de personas -->
+                <div class="form-group">
+                    <label for="cantidadPersonas">
+                        👥 ¿Cuántas personas están presentes? <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="number" 
+                        id="cantidadPersonas" 
+                        name="cantidadPersonas" 
+                        min="1" 
+                        max="100"
+                        placeholder="Ingresa el número de personas"
+                        required
+                    >
+                </div>
+
+                <!-- Campo 4: Nombres de colaboradores -->
+                <div class="form-group">
+                    <label for="colaboradores">
+                        👤 Ingresa los nombres de los colaboradores <span class="required">*</span>
+                    </label>
+                    <textarea 
+                        id="colaboradores" 
+                        name="colaboradores" 
+                        placeholder="Escribe los nombres separados por comas o en líneas diferentes..."
+                        required
+                    ></textarea>
+                    <div class="char-count">
+                        <span id="charCount">0</span> caracteres
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit">Guardar Informe</button>
+                    <button type="submit" class="btn btn-submit">Regresar a inicio</button>
+                    <button type="reset" class="btn btn-cancel" onclick="resetForm()">✕ Cancelar</button>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Mostrar/ocultar campo de descripción de percances
+        function togglePercanceField() {
+            const percances = document.getElementById('percances').value;
+            const percanceField = document.getElementById('percanceField');
+            
+            if (percances === 'si') {
+                percanceField.classList.add('show');
+            } else {
+                percanceField.classList.remove('show');
+            }
+        }
+
+        // Contador de caracteres
+        document.getElementById('colaboradores').addEventListener('input', function() {
+            document.getElementById('charCount').textContent = this.value.length;
+        });
+
+        // Envío del formulario
+        document.getElementById('formularioSEL').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validar campos
+            const horaLlegada = document.getElementById('horaLlegada').value;
+            const percances = document.getElementById('percances').value;
+            const cantidadPersonas = document.getElementById('cantidadPersonas').value;
+            const colaboradores = document.getElementById('colaboradores').value;
+
+            if (!horaLlegada || !percances || !cantidadPersonas || !colaboradores) {
+                alert('⚠️ Por favor completa todos los campos requeridos');
+                return;
+            }
+
+            // Mostrar mensaje de éxito
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+
+            // Registrar datos en consola (en una aplicación real, se enviaría a un servidor)
+            console.log('Informe SEL registrado:', {
+                horaLlegada,
+                percances,
+                descripcionPercance: document.getElementById('descripcionPercance').value,
+                cantidadPersonas,
+                colaboradores
+            });
+
+            // Ocultar mensaje después de 3 segundos
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+
+            // Opcional: Limpiar formulario después de enviar
+            setTimeout(() => {
+                this.reset();
+                document.getElementById('percanceField').classList.remove('show');
+                document.getElementById('charCount').textContent = '0';
+            }, 1500);
+        });
+
+        // Función para resetear el formulario
+        function resetForm() {
+            document.getElementById('formularioSEL').reset();
+            document.getElementById('percanceField').classList.remove('show');
+            document.getElementById('charCount').textContent = '0';
+        }
+    </script>
+</body>
+</html>
