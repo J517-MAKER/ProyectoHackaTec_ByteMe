@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
+<title>VigíaNE — CAEL</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/cael.css"/>
+</head>
+<body>
+
+<div class="app">
+
+<!-- ═══════ SVG ICON DEFS (hidden) ═══════ -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-back"><polyline points="15 18 9 12 15 6"/></symbol>
+  <symbol id="i-check"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-alert"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-clip"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></symbol>
+  <symbol id="i-box"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+  <symbol id="i-phone"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
+  <symbol id="i-cam"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+  <symbol id="i-bell"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></symbol>
+  <symbol id="i-map"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-copy"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></symbol>
+  <symbol id="i-save"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></symbol>
+  <symbol id="i-mic"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+  <symbol id="i-home"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-user"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-truck"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+  <symbol id="i-chev"><polyline points="9 18 15 6"/></symbol>
+  <symbol id="i-lock"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></symbol>
+  <symbol id="i-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-bar"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+  <symbol id="i-scan"><path d="M4 7V4h3"/><path d="M20 7V4h-3"/><path d="M4 17v3h3"/><path d="M20 17v3h-3"/><line x1="4" y1="12" x2="20" y2="12"/></symbol>
+  <symbol id="i-file"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+  <symbol id="i-shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-arrow-r"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+</svg>
+
+<!-- ═══════ HUB ═══════ -->
+<div class="v on" id="hub">
+  <div class="hub-hd" onclick="openSheet()">
+    <div class="hub-hd-left">
+      <div class="hub-logo"><svg><use href="#i-check"/></svg></div>
+      <div class="hub-id"><h1 id="h_cas">Secci&oacute;n 357 B&aacute;sica&ensp;&#8250;</h1><span id="h_are">ARE D01Z02A031</span></div>
+    </div>
+    <div class="hub-hd-right">
+      <span class="clock" id="clk">--:--</span>
+      <div class="conn"><span class="conn-dot" id="cDot"></span><span id="cLbl">En l&iacute;nea</span></div>
+    </div>
+  </div>
+  <div class="phase"><span class="phase-name" id="pName">Votaci&oacute;n en curso</span><span class="phase-count" id="pCount">3 de 8</span></div>
+  <div class="prog-bar"><div class="prog-fill" id="pFill" style="width:37.5%"></div></div>
+
+  <div class="scroll">
+    <div class="card">
+      <div class="card-hd">Registro de la jornada</div>
+      <div class="tl" id="tlWrap"></div>
+    </div>
+
+    <div class="lbl">Acciones</div>
+    <div class="card" style="background:transparent;border:none;box-shadow:none;overflow:visible">
+      <div class="act-grid" id="actGrid"></div>
+    </div>
+
+    <div class="notif-card" onclick="toast('ok','Mensaje del SEL','Confirma instalación antes de las 07:30')">
+      <div class="notif-ic"><svg><use href="#i-bell"/></svg><span class="notif-badge">1</span></div>
+      <div class="notif-txt"><strong>Mensaje de tu SEL</strong><span>Toca para leer</span></div>
+      <span class="notif-arr">&#8250;</span>
+    </div>
+  </div>
+
+  <nav class="bnav">
+    <button class="bnav-it on"><svg><use href="#i-home"/></svg><span>Inicio</span></button>
+    <button class="bnav-it"><svg><use href="#i-alert"/></svg><span>Incidencias</span></button>
+    <button class="bnav-it"><svg><use href="#i-clip"/></svg><span>Jornada</span></button>
+    <button class="bnav-it"><svg><use href="#i-box"/></svg><span>Paquete</span></button>
+    <button class="bnav-it"><svg><use href="#i-user"/></svg><span>Perfil</span></button>
+  </nav>
+</div>
+
+<!-- ═══════ INSTALACION ═══════ -->
+<div class="v" id="instalacion">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Instalaci&oacute;n de casilla</div><span class="tb-sub">Etapa 1 de 8</span></div></div>
+  <div class="ctx"><div class="ctx-n"><span class="l">Secc</span><span class="n">357</span></div><div><strong>Secci&oacute;n 357 B&aacute;sica</strong><span>Esc. Primaria Benito Ju&aacute;rez</span></div></div>
+  <div class="scroll">
+    <div class="lbl">¿Se instal&oacute; la casilla?</div>
+    <button class="choice yes" onclick="nav('instalacion_ok')">
+      <div class="ch-ic ok-i"><svg><use href="#i-check"/></svg></div>
+      <div><div class="ch-lbl">S&iacute;, se instal&oacute;</div><div class="ch-sub">Todo listo para recibir votantes</div></div>
+      <span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span>
+    </button>
+    <button class="choice no" onclick="nav('incidencia_1',{pre:'NO_INSTALACION',label:'Casilla no instalada',grave:false})">
+      <div class="ch-ic err-i"><svg><use href="#i-alert"/></svg></div>
+      <div><div class="ch-lbl">NO se pudo instalar</div><div class="ch-sub">Se generar&aacute; reporte de incidencia</div></div>
+      <span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span>
+    </button>
+  </div>
+</div>
+
+<!-- ═══════ INSTALACION CONFIRMAR ═══════ -->
+<div class="v" id="instalacion_ok">
+  <div class="tb"><button class="tb-back" onclick="nav('instalacion')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Confirmar instalaci&oacute;n</div><span class="tb-sub">Secci&oacute;n 357 B&aacute;sica</span></div></div>
+  <div class="scroll">
+    <div class="field"><label>Hora de instalaci&oacute;n</label><div class="field-row"><div class="field"><input type="time" value="07:48"/></div></div></div>
+    <div class="lbl">Funcionariado presente</div>
+    <div class="chk-list" id="funcList"></div>
+    <div class="lbl">Evidencia</div>
+    <div class="photo-btn" id="ph_inst" onclick="takePhoto('ph_inst')"><svg><use href="#i-cam"/></svg><span>Tomar foto de la casilla (recomendado)</span></div>
+    <div class="field"><label>Observaciones <small>(opcional)</small></label><textarea rows="2" placeholder="Ej. lleg&oacute; con retraso..."></textarea></div>
+    <button class="btn-p" onclick="doPost('Instalación registrada','Notificando al SEL y Jefatura CME...','hub')"><svg><use href="#i-check"/></svg>Confirmar instalaci&oacute;n</button>
+  </div>
+</div>
+
+<!-- ═══════ INICIO VOTACION ═══════ -->
+<div class="v" id="inicio_votacion">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Inicio de votaci&oacute;n</div><span class="tb-sub">Etapa 2 de 8</span></div></div>
+  <div class="ctx"><div class="ctx-n"><span class="l">Secc</span><span class="n">357</span></div><div><strong>Secci&oacute;n 357 B&aacute;sica</strong><span>Instalada a las 07:48</span></div></div>
+  <div class="scroll">
+    <div class="info-b"><strong>Registra el momento oficial en que la casilla comenz&oacute; a recibir votos.</strong></div>
+    <div class="field"><label>Hora de inicio de votaci&oacute;n</label><div class="field-row"><div class="field"><input type="time" value="08:05"/></div></div></div>
+    <div class="field"><label>Observaciones <small>(opcional)</small></label><textarea rows="2" placeholder="Ej. inicio sin novedades..."></textarea></div>
+    <button class="btn-p" onclick="doPost('Inicio de votación registrado','Estado: VOTACIÓN EN CURSO','hub')"><svg><use href="#i-check"/></svg>Confirmar inicio de votaci&oacute;n</button>
+  </div>
+</div>
+
+<!-- ═══════ REPORTE INTERMEDIO ═══════ -->
+<div class="v" id="reporte_avance">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Reporte de avance</div><span class="tb-sub">Opcional &middot; Durante votaci&oacute;n</span></div></div>
+  <div class="scroll">
+    <div class="info-b">Este reporte es <strong>opcional</strong>. &Uacute;salo si deseas informar al SEL sobre el avance de la jornada.</div>
+    <div class="lbl">Afluencia de votantes</div>
+    <div class="rad-list" id="rl_afluencia"></div>
+    <div class="field"><label>Observaciones <small>(opcional)</small></label><textarea rows="3" placeholder="Ej. filas largas, ambiente tranquilo..."></textarea></div>
+    <div class="photo-btn" id="ph_avance" onclick="takePhoto('ph_avance')"><svg><use href="#i-cam"/></svg><span>Foto (opcional)</span></div>
+    <button class="btn-p" onclick="doPost('Reporte enviado','Tu SEL fue notificado del avance.','hub')"><svg><use href="#i-arrow-r"/></svg>Enviar reporte</button>
+    <button class="btn-s" onclick="nav('hub')">Omitir por ahora</button>
+  </div>
+</div>
+
+<!-- ═══════ INCIDENCIA PASO 1 ═══════ -->
+<div class="v" id="incidencia_1">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Reportar problema</div><span class="tb-sub">Paso 1 de 3 — Tipo de incidencia</span></div></div>
+  <div class="scroll">
+    <div class="steps"><div class="st-dot on"></div><div class="st-dot"></div><div class="st-dot"></div></div>
+    <div class="lbl">Problemas graves</div>
+    <div id="inc_graves"></div>
+    <div class="lbl" style="margin-top:6px">Otros problemas</div>
+    <div id="inc_otros"></div>
+  </div>
+</div>
+
+<!-- ═══════ INCIDENCIA PASO 2 ═══════ -->
+<div class="v" id="incidencia_2">
+  <div class="tb"><button class="tb-back" onclick="nav('incidencia_1')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title" id="inc2_title">Especificar</div><span class="tb-sub">Paso 2 de 3</span></div></div>
+  <div class="scroll">
+    <div class="steps"><div class="st-dot done"></div><div class="st-dot on"></div><div class="st-dot"></div></div>
+    <div id="inc2_badge"></div>
+    <div class="lbl" id="inc2_q">Especifica</div>
+    <div id="inc2_opts" style="display:flex;flex-direction:column;gap:8px;"></div>
+  </div>
+</div>
+
+<!-- ═══════ INCIDENCIA PASO 3 ═══════ -->
+<div class="v" id="incidencia_3">
+  <div class="tb"><button class="tb-back" onclick="nav('incidencia_2')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Confirmar reporte</div><span class="tb-sub">Paso 3 de 3</span></div></div>
+  <div class="scroll">
+    <div class="steps"><div class="st-dot done"></div><div class="st-dot done"></div><div class="st-dot on"></div></div>
+    <div id="inc3_badge"></div>
+    <div class="info-b" id="inc3_summary"></div>
+    <div class="field"><label>Hora del incidente</label><div class="field-row"><div class="field"><input type="time" id="inc_hora" value="10:22"/></div></div></div>
+    <div class="field"><label>Descripci&oacute;n <small>(opcional pero recomendado)</small></label><textarea rows="3" placeholder="Describe con detalle lo que ocurre..."></textarea></div>
+    <div class="lbl">Evidencia</div>
+    <div style="display:flex;gap:8px">
+      <div class="photo-btn" id="ph_inc" onclick="takePhoto('ph_inc')" style="flex:1"><svg><use href="#i-cam"/></svg><span>Foto</span></div>
+      <div class="photo-btn" onclick="toast('ok','Audio','Grabando...')" style="flex:1"><svg><use href="#i-mic"/></svg><span>Audio</span></div>
+    </div>
+    <div class="info-b warn" id="inc3_notif"></div>
+    <button class="btn-p" id="inc3_btn" onclick="doPost('Reporte enviado','Te avisaremos cuando llegue apoyo.','hub')">Enviar reporte</button>
+  </div>
+</div>
+
+<!-- ═══════ CIERRE ═══════ -->
+<div class="v" id="cierre">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Cierre de votaci&oacute;n</div><span class="tb-sub">Etapa 3 de 8</span></div></div>
+  <div class="scroll">
+    <div class="info-b"><strong>Registra el cierre oficial de la votaci&oacute;n.</strong></div>
+    <div class="field"><label>Hora de cierre</label><div class="field-row"><div class="field"><input type="time" value="18:00"/></div></div></div>
+    <div class="lbl">Tipo de cierre</div>
+    <div class="rad-list" id="rl_cierre"></div>
+    <div class="field"><label>Personas formadas a las 18:00</label><input type="number" value="0" min="0"/></div>
+    <div class="field"><label>Observaciones <small>(opcional)</small></label><textarea rows="2"></textarea></div>
+    <button class="btn-p" onclick="doPost('Cierre registrado','Pasando a escrutinio...','escrutinio')"><svg><use href="#i-check"/></svg>Confirmar cierre</button>
+  </div>
+</div>
+
+<!-- ═══════ ESCRUTINIO ═══════ -->
+<div class="v" id="escrutinio">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Escrutinio y c&oacute;mputo</div><span class="tb-sub">Etapa 4 de 8</span></div></div>
+  <div class="ctx"><div class="ctx-n"><span class="l">Secc</span><span class="n">357</span></div><div><strong>Secci&oacute;n 357 B&aacute;sica</strong><span>Cerrada a las 18:00</span></div></div>
+  <div class="scroll">
+    <div class="lbl">El conteo de votos</div>
+    <div class="time-act active" id="ta_ini"><div class="ta-info"><strong>Inici&oacute; a las</strong><span id="esc_ini_v">A&uacute;n no registrado</span></div><button class="btn-now brand" id="btn_esc_ini" onclick="escIni()">Iniciar ahora</button></div>
+    <div class="time-act" id="ta_fin"><div class="ta-info"><strong>Termin&oacute; a las</strong><span id="esc_fin_v">Despu&eacute;s de iniciar</span></div><button class="btn-now brand" id="btn_esc_fin" onclick="escFin()" disabled style="opacity:.4;cursor:not-allowed">Terminar ahora</button></div>
+    <div class="lbl">Problemas en el conteo</div>
+    <div class="rad-list" id="rl_esc_prob"></div>
+    <div class="photo-btn" id="ph_acta" onclick="takePhoto('ph_acta')"><svg><use href="#i-cam"/></svg><span>Foto del acta (opcional, &uacute;til para auditor&iacute;a)</span></div>
+    <button class="btn-p" id="btn_esc_done" onclick="doPost('Escrutinio completado','Pasando a integración del paquete...','paquete_integracion')" disabled style="opacity:.4;cursor:not-allowed"><svg><use href="#i-check"/></svg>Termin&eacute; el escrutinio</button>
+  </div>
+</div>
+
+<!-- ═══════ PAQUETE INTEGRACION ═══════ -->
+<div class="v" id="paquete_integracion">
+  <div class="tb"><button class="tb-back" onclick="nav('hub')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Integraci&oacute;n del paquete</div><span class="tb-sub">Etapa 5 de 8</span></div></div>
+  <div class="ctx"><div class="ctx-n"><span class="l">Secc</span><span class="n">357</span></div><div><strong>Secci&oacute;n 357 B&aacute;sica</strong><span>Escrutinio terminado: 21:40</span></div></div>
+  <div class="scroll">
+    <div class="info-b"><strong>Confirma que el paquete est&aacute; armado y sellado.</strong></div>
+    <div class="field"><label>Hora de integraci&oacute;n</label><div class="field-row"><div class="field"><input type="time" value="21:45"/></div></div></div>
+    <div class="lbl">Foto del paquete sellado</div>
+    <div class="photo-btn req" id="ph_sellado" onclick="takePhoto('ph_sellado')"><svg><use href="#i-cam"/></svg><span>Foto obligatoria del paquete sellado</span></div>
+    <div class="lbl">Estado del paquete</div>
+    <div class="rad-list" id="rl_estado_pkg"></div>
+    <div class="field"><label>Responsable que entrega (Presidente de Mesa)</label><input type="text" placeholder="Nombre completo..."/></div>
+    <button class="btn-p" onclick="toast('ok','Generando QR...','Esto tomará un momento');setTimeout(()=>nav('paquete_qr'),1200)"><svg><use href="#i-box"/></svg>Integrar y generar QR</button>
+  </div>
+</div>
+
+<!-- ═══════ PAQUETE QR ═══════ -->
+<div class="v" id="paquete_qr">
+  <div class="tb"><button class="tb-back" onclick="nav('paquete_integracion')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Paquete listo</div><span class="tb-sub">Etapa 5 de 8</span></div></div>
+  <div class="scroll">
+    <div style="display:flex;align-items:center;gap:8px;padding:4px 0"><svg style="width:20px;height:20px;stroke:var(--ok);fill:none;stroke-width:2"><use href="#i-check"/></svg><span style="font-weight:700;color:var(--ok);font-size:.88rem;">Paquete integrado correctamente</span></div>
+    <div class="qr-wrap">
+      <div class="qr-img"></div>
+      <div class="qr-id">PKG-019-357-B-20260607214500</div>
+      <div class="qr-acts">
+        <button class="btn-qr" onclick="toast('ok','ID copiado','PKG-019-357-B-20260607214500')"><svg><use href="#i-copy"/></svg>Copiar ID</button>
+        <button class="btn-qr" onclick="toast('ok','Guardado','Imagen QR guardada en galería')"><svg><use href="#i-save"/></svg>Guardar</button>
+      </div>
+    </div>
+    <div class="lbl">Modalidad de traslado</div>
+    <button class="choice opt" onclick="nav('mecanismo_traslado',{quien:'A'})"><div class="ch-ic grey-i"><svg><use href="#i-user"/></svg></div><div><div class="ch-lbl">El Presidente lo lleva solo</div><div class="ch-sub">T&uacute; te quedas, &eacute;l traslada</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+    <button class="choice opt" onclick="nav('mecanismo_traslado',{quien:'B'})"><div class="ch-ic brand-i"><svg><use href="#i-user"/></svg></div><div><div class="ch-lbl">Yo (CAEL) lo voy a llevar</div><div class="ch-sub">T&uacute; tomas el paquete y lo trasladas</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+    <button class="choice opt" onclick="nav('mecanismo_traslado',{quien:'C'})"><div class="ch-ic brand-i"><svg><use href="#i-shield"/></svg></div><div><div class="ch-lbl">Acompa&ntilde;o al Presidente</div><div class="ch-sub">Ambos van al punto de entrega</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+  </div>
+</div>
+
+<!-- ═══════ MECANISMO TRASLADO ═══════ -->
+<div class="v" id="mecanismo_traslado">
+  <div class="tb"><button class="tb-back" onclick="nav('paquete_qr')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Mecanismo de traslado</div><span class="tb-sub">Etapa 6 de 8</span></div></div>
+  <div class="scroll">
+    <div class="lbl">¿A d&oacute;nde se lleva el paquete?</div>
+    <button class="choice opt" onclick="nav('salida_paquete')"><div class="ch-ic brand-i"><svg><use href="#i-map"/></svg></div><div><div class="ch-lbl">Entrega directa</div><div class="ch-sub">CME San Pedro &middot; Calzada San Pedro #500</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+    <button class="choice opt" onclick="nav('salida_paquete')"><div class="ch-ic grey-i"><svg><use href="#i-map"/></svg></div><div><div class="ch-lbl">CRyT Fijo</div><div class="ch-sub">Punto de recepci&oacute;n intermedio</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+    <button class="choice opt" onclick="nav('salida_paquete')"><div class="ch-ic grey-i"><svg><use href="#i-truck"/></svg></div><div><div class="ch-lbl">CRyT Itinerante</div><div class="ch-sub">Veh&iacute;culo recoge en ruta</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+    <button class="choice opt" onclick="nav('salida_paquete')"><div class="ch-ic grey-i"><svg><use href="#i-truck"/></svg></div><div><div class="ch-lbl">DAT</div><div class="ch-sub">Veh&iacute;culo de apoyo de funcionarios</div></div><span class="ch-arr"><svg><use href="#i-arrow-r"/></svg></span></button>
+  </div>
+</div>
+
+<!-- ═══════ SALIDA PAQUETE ═══════ -->
+<div class="v" id="salida_paquete">
+  <div class="tb"><button class="tb-back" onclick="nav('mecanismo_traslado')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Salida del paquete</div><span class="tb-sub">Etapa 6 de 8</span></div></div>
+  <div class="scroll">
+    <div class="info-b"><strong>PKG-019-357-B-20260607214500</strong><br>Registra el momento exacto de salida del paquete.</div>
+    <div class="field"><label>Hora de salida</label><div class="field-row"><div class="field"><input type="time" value="22:00"/></div></div></div>
+    <div class="field"><label>Nombre de quien traslada</label><input type="text" placeholder="Nombre completo..."/></div>
+    <div class="field"><label>Cargo</label><input type="text" placeholder="Ej. Presidente de Mesa Directiva..."/></div>
+    <div class="info-b"><strong>Destino</strong><br>CME San Pedro Garza Garc&iacute;a — Entrega directa</div>
+    <div class="photo-btn" id="ph_salida" onclick="takePhoto('ph_salida')"><svg><use href="#i-cam"/></svg><span>Foto antes de salir (opcional)</span></div>
+    <button class="btn-p" onclick="doPost('Salida registrada','Paquete en estado EN TRASLADO','entrega_paquete')"><svg><use href="#i-check"/></svg>Confirmar salida</button>
+  </div>
+</div>
+
+<!-- ═══════ ENTREGA PAQUETE ═══════ -->
+<div class="v" id="entrega_paquete">
+  <div class="tb"><button class="tb-back" onclick="nav('salida_paquete')"><svg><use href="#i-back"/></svg></button><div><div class="tb-title">Entrega del paquete</div><span class="tb-sub">Etapa 7 de 8</span></div></div>
+  <div class="scroll">
+    <div class="info-b"><strong>Registra la llegada al punto de recepci&oacute;n.</strong></div>
+    <div class="field"><label>Hora de entrega</label><div class="field-row"><div class="field"><input type="time" value="22:45"/></div></div></div>
+    <div class="lbl">Estado del paquete al llegar</div>
+    <div class="rad-list" id="rl_entrega"></div>
+    <div class="lbl">Qui&eacute;n lo recibi&oacute;</div>
+    <div class="photo-btn" onclick="toast('ok','Esc&aacute;ner','Escaneando credencial de Jefatura CME...')"><svg><use href="#i-scan"/></svg><span>Escanear QR de Jefatura CME</span></div>
+    <div style="text-align:center;font-size:.7rem;color:var(--text-3);padding:4px 0;">o ingresar manualmente</div>
+    <div class="field"><input type="text" placeholder="Nombre de quien recibe..."/></div>
+    <div class="photo-btn" id="ph_acuse" onclick="takePhoto('ph_acuse')"><svg><use href="#i-cam"/></svg><span>Foto del acuse de entrega</span></div>
+    <button class="btn-p grn" onclick="doPost('Entrega confirmada','Jornada completa.','fin_jornada')"><svg><use href="#i-check"/></svg>Confirmar entrega</button>
+  </div>
+</div>
+
+<!-- ═══════ FIN DE JORNADA ═══════ -->
+<div class="v" id="fin_jornada">
+  <div class="tb" style="background:linear-gradient(135deg,var(--brand-l),var(--brand-dd));border-bottom:none;"><div style="flex:1;text-align:center"><div class="tb-title" style="color:#fff;font-size:.95rem;">Jornada completa</div></div></div>
+  <div class="succ">
+    <div class="succ-ic"><svg><use href="#i-check"/></svg></div>
+    <div class="succ-t">Jornada completa</div>
+    <div class="succ-s">Secci&oacute;n 357 B&aacute;sica &middot; Tu informe qued&oacute; registrado.</div>
+    <div class="sum">
+      <div class="sum-r"><span class="sum-l">Instalaci&oacute;n</span><span class="sum-v">07:48 <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Inicio votaci&oacute;n</span><span class="sum-v">08:05 <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Incidencias</span><span class="sum-v">1 atendida <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Cierre</span><span class="sum-v">18:00 <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Escrutinio</span><span class="sum-v">21:40 <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Paquete integrado</span><span class="sum-v">21:45 <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Salida paquete</span><span class="sum-v">22:00 <span class="ok">&#10003;</span></span></div>
+      <div class="sum-r"><span class="sum-l">Entrega en CME</span><span class="sum-v">22:45 <span class="ok">&#10003;</span></span></div>
+    </div>
+    <div class="info-b" style="width:100%;text-align:center;"><strong>Tiempo total de jornada</strong><br><span style="font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:700;color:var(--brand);">14 horas, 57 minutos</span></div>
+    <div style="font-size:.82rem;color:var(--text-2);text-align:center;line-height:1.6;padding:0 8px">Gracias por tu trabajo en esta Jornada Electoral.<br>Tu informe qued&oacute; completo y respaldado.</div>
+    <div style="display:flex;flex-direction:column;gap:8px;width:100%">
+      <button class="btn-p" onclick="toast('ok','Resumen','Abriendo resumen completo...')"><svg><use href="#i-file"/></svg>Ver resumen completo</button>
+      <button class="btn-s" onclick="toast('ok','Sesión cerrada','Hasta la próxima jornada.')">Cerrar sesi&oacute;n</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- app -->
+
+<!-- ═══════ SHEET ═══════ -->
+<div class="sheet-bg" id="sheetBg" onclick="closeSheet(event)">
+  <div class="sheet"><div class="sheet-handle"></div><div class="sheet-t">Casillas asignadas</div><div id="sheetList"></div></div>
+</div>
+
+<!-- ═══════ TOAST ═══════ -->
+<div class="toast" id="toastEl"><div class="toast-ic ok" id="tIc"><svg><use href="#i-check"/></svg></div><div><strong id="tT">—</strong><span id="tM">—</span></div></div>
+
+<script src="js/cael.js"></script>
+</body>
+</html>
