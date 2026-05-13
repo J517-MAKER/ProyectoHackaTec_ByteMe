@@ -63,11 +63,6 @@
             font-weight: 600;
             color: #333;
             margin-bottom: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .form-group label:hover {
-            color: #8B3A62;
         }
 
         .form-group input[type="time"],
@@ -81,7 +76,6 @@
             border-radius: 8px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             transition: all 0.3s ease;
-            resize: none;
         }
 
         .form-group input[type="time"]:focus,
@@ -113,31 +107,14 @@
             background: #fff3cd;
             border-left: 4px solid #ffc107;
             border-radius: 4px;
-            animation: slideDown 0.3s ease;
         }
 
         .hidden-field.show {
             display: block;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .hidden-field textarea {
             margin-top: 10px;
-        }
-
-        .hidden-field label {
-            margin-bottom: 8px;
-            font-size: 14px;
         }
 
         .button-group {
@@ -155,8 +132,6 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .btn-submit {
@@ -165,13 +140,14 @@
             box-shadow: 0 4px 15px rgba(139, 58, 98, 0.3);
         }
 
-        .btn-submit:hover {
+        .btn-submit:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(139, 58, 98, 0.4);
         }
 
-        .btn-submit:active {
-            transform: translateY(0);
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
 
         .btn-cancel {
@@ -185,28 +161,26 @@
             border-color: #d0d0d0;
         }
 
-        .success-message {
-            display: none;
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            padding: 15px;
-            border-radius: 8px;
+        .mensaje-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 12px;
+            border-radius: 4px;
             margin-bottom: 20px;
-            animation: fadeIn 0.3s ease;
+            text-align: center;
+            display: none;
         }
 
-        .success-message.show {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .mensaje-exito {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
         }
 
         .required {
@@ -215,24 +189,8 @@
         }
 
         @media (max-width: 600px) {
-            .header {
-                padding: 20px;
-            }
-
-            .header h1 {
-                font-size: 22px;
-            }
-
-            .form-container {
-                padding: 20px;
-            }
-
             .button-group {
                 flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
             }
         }
     </style>
@@ -246,24 +204,16 @@
             </div>
 
             <div class="form-container">
-                <div class="success-message" id="successMessage">
-                    ✓ Informe registrado exitosamente
-                </div>
+                <div class="mensaje-error" id="mensajeError"></div>
+                <div class="mensaje-exito" id="mensajeExito"></div>
 
-                <!-- Campo 1: Hora de llegada -->
                 <div class="form-group">
                     <label for="horaLlegada">
                         ⏰ ¿A qué horas llegaste? <span class="required">*</span>
                     </label>
-                    <input 
-                        type="time" 
-                        id="horaLlegada" 
-                        name="horaLlegada" 
-                        required
-                    >
+                    <input type="time" id="horaLlegada" name="horaLlegada" required>
                 </div>
 
-                <!-- Campo 2: Percances con material -->
                 <div class="form-group">
                     <label for="percances">
                         ⚠️ ¿Tuviste algún percance con el material dado? <span class="required">*</span>
@@ -275,63 +225,40 @@
                     </select>
                 </div>
 
-                <!-- Campo oculto: Descripción del percance -->
                 <div class="hidden-field" id="percanceField">
                     <label for="descripcionPercance">
                         Describe el percance:
                     </label>
-                    <textarea 
-                        id="descripcionPercance" 
-                        name="descripcionPercance" 
-                        placeholder="Detalla qué sucedió con el material..."
-                    ></textarea>
+                    <textarea id="descripcionPercance" name="descripcionPercance" placeholder="Detalla qué sucedió con el material..."></textarea>
                 </div>
 
-                <!-- Campo 3: Cantidad de personas -->
                 <div class="form-group">
                     <label for="cantidadPersonas">
                         👥 ¿Cuántas personas están presentes? <span class="required">*</span>
                     </label>
-                    <input 
-                        type="number" 
-                        id="cantidadPersonas" 
-                        name="cantidadPersonas" 
-                        min="1" 
-                        max="100"
-                        placeholder="Ingresa el número de personas"
-                        required
-                    >
+                    <input type="number" id="cantidadPersonas" name="cantidadPersonas" min="1" max="100" placeholder="Ingresa el número de personas" required>
                 </div>
 
-                <!-- Campo 4: Nombres de colaboradores -->
                 <div class="form-group">
                     <label for="colaboradores">
                         👤 Ingresa los nombres de los colaboradores <span class="required">*</span>
                     </label>
-                    <textarea 
-                        id="colaboradores" 
-                        name="colaboradores" 
-                        placeholder="Escribe los nombres separados por comas o en líneas diferentes..."
-                        required
-                    ></textarea>
+                    <textarea id="colaboradores" name="colaboradores" placeholder="Escribe los nombres separados por comas o en líneas diferentes..." required></textarea>
                     <div class="char-count">
                         <span id="charCount">0</span> caracteres
                     </div>
                 </div>
 
-                <!-- Botones -->
                 <div class="button-group">
-                    <button type="submit" class="btn btn-submit">Guardar Informe</button>
-                    <button type="button" class="btn btn-submit" onclick="regresarInicio()">Regresar a inicio</button>
+                    <button type="submit" class="btn btn-submit" id="btnSubmit">💾 Guardar Informe</button>
+                    <button type="button" class="btn btn-submit" onclick="regresarInicio()">← Regresar</button>
                     <button type="reset" class="btn btn-cancel" onclick="resetForm()">✕ Cancelar</button>
-                    
                 </div>
             </div>
         </form>
     </div>
 
     <script>
-        // Mostrar/ocultar campo de descripción de percances
         function togglePercanceField() {
             const percances = document.getElementById('percances').value;
             const percanceField = document.getElementById('percanceField');
@@ -343,62 +270,86 @@
             }
         }
 
-        // Contador de caracteres
         document.getElementById('colaboradores').addEventListener('input', function() {
             document.getElementById('charCount').textContent = this.value.length;
         });
 
-          function regresarInicio() {
-            window.location.href = "sel.html";
+        function regresarInicio() {
+            window.location.href = "SEL.html";
         }
 
-
-        // Envío del formulario
-        document.getElementById('formularioSEL').addEventListener('submit', function(e) {
+        document.getElementById('formularioSEL').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            // Validar campos
             const horaLlegada = document.getElementById('horaLlegada').value;
             const percances = document.getElementById('percances').value;
             const cantidadPersonas = document.getElementById('cantidadPersonas').value;
             const colaboradores = document.getElementById('colaboradores').value;
 
             if (!horaLlegada || !percances || !cantidadPersonas || !colaboradores) {
-                alert('⚠️ Por favor completa todos los campos requeridos');
+                mostrarError('Por favor completa todos los campos requeridos');
                 return;
             }
 
-            // Mostrar mensaje de éxito
-            const successMessage = document.getElementById('successMessage');
-            successMessage.classList.add('show');
+            const btnSubmit = document.getElementById('btnSubmit');
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = '⏳ Guardando...';
 
-            // Registrar datos en consola (en una aplicación real, se enviaría a un servidor)
-            console.log('Informe SEL registrado:', {
-                horaLlegada,
-                percances,
-                descripcionPercance: document.getElementById('descripcionPercance').value,
-                cantidadPersonas,
-                colaboradores
-            });
+            try {
+                const formData = new FormData();
+                formData.append('horaLlegada', horaLlegada);
+                formData.append('percances', percances);
+                formData.append('descripcionPercance', document.getElementById('descripcionPercance').value);
+                formData.append('cantidadPersonas', cantidadPersonas);
+                formData.append('colaboradores', colaboradores);
 
-            // Ocultar mensaje después de 3 segundos
-            setTimeout(() => {
-                successMessage.classList.remove('show');
-            }, 3000);
+                const respuesta = await fetch('guardar_reporte_sel.php', {
+                    method: 'POST',
+                    body: formData
+                });
 
-            // Opcional: Limpiar formulario después de enviar
-            setTimeout(() => {
-                this.reset();
-                document.getElementById('percanceField').classList.remove('show');
-                document.getElementById('charCount').textContent = '0';
-            }, 1500);
+                const datos = await respuesta.json();
+
+                if (datos.exito) {
+                    mostrarExito('✓ ' + datos.mensaje);
+                    
+                    setTimeout(() => {
+                        document.getElementById('formularioSEL').reset();
+                        document.getElementById('percanceField').classList.remove('show');
+                        document.getElementById('charCount').textContent = '0';
+                        window.location.href = "SEL.html";
+                    }, 2000);
+                } else {
+                    mostrarError('❌ ' + datos.mensaje);
+                    btnSubmit.disabled = false;
+                    btnSubmit.textContent = '💾 Guardar Informe';
+                }
+            } catch (error) {
+                mostrarError('❌ Error: ' + error.message);
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = '💾 Guardar Informe';
+            }
         });
 
-        // Función para resetear el formulario
         function resetForm() {
             document.getElementById('formularioSEL').reset();
             document.getElementById('percanceField').classList.remove('show');
             document.getElementById('charCount').textContent = '0';
+        }
+
+        function mostrarError(mensaje) {
+            const div = document.getElementById('mensajeError');
+            div.textContent = mensaje;
+            div.style.display = 'block';
+            setTimeout(() => {
+                div.style.display = 'none';
+            }, 5000);
+        }
+
+        function mostrarExito(mensaje) {
+            const div = document.getElementById('mensajeExito');
+            div.textContent = mensaje;
+            div.style.display = 'block';
         }
     </script>
 </body>
