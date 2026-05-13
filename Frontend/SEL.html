@@ -595,38 +595,46 @@
     </div>
 
     <script>
-        // Navegación entre secciones
-        const navLinks = document.querySelectorAll('nav a');
-        const sections = document.querySelectorAll('main section');
+    // Navegación del menú lateral
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('main section');
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Remover clase active de todos los enlaces
-                navLinks.forEach(l => l.classList.remove('active'));
-                // Agregar clase active al enlace clickeado
-                link.classList.add('active');
-
-                // Ocultar todas las secciones
-                sections.forEach(section => section.style.display = 'none');
-                
-                // Mostrar la sección correspondiente
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.style.display = 'block';
-                }
-            });
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Remover clase active de todos los enlaces
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            
+            // Ocultar todas las secciones
+            sections.forEach(section => section.style.display = 'none');
+            
+            // Mostrar la sección seleccionada
+            const sectionId = link.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
         });
+    });
 
-        // Evento para botones de las tarjetas
-        const cardButtons = document.querySelectorAll('.card-button');
-        cardButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                alert('Función disponible próximamente: ' + e.target.textContent);
-            });
+    // Manejar clics en botones de acciones
+    const cardButtons = document.querySelectorAll('.card-button:not([href])');
+    cardButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            console.log('Botón clickeado:', buttonText);
+            // Aquí puedes agregar acciones específicas según el botón
         });
-    </script>
+    });
+
+    // Cerrar sesión
+    document.querySelector('.user-avatar').addEventListener('click', function() {
+        if (confirm('¿Deseas cerrar sesión?')) {
+            window.location.href = 'index.html';
+        }
+    });
+</script>
 </body>
 </html>
